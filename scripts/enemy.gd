@@ -28,19 +28,22 @@ func _physics_process(delta):
 	velocity.x = direction * SPEED * delta
 
 	move_and_slide()
-	
 
 func _on_ponto_fraco_body_entered(body):
 	if body.name == 'player':
-		queue_free()
 		vivo = false
-		print("matou o inimigo")
+		move_and_slide()
+		$anim.play("hurt")
+		await get_tree().create_timer(0.3).timeout
+		queue_free()
 
 func _on_area_2d_body_entered(body):
 	if  vivo and body.name == 'player':
-		print("bate no player")
-		get_node("/root/World-01/player").sofreu_dano(10)
-	
-
+		get_node("/root/World-01/player").sofreu_dano(10, direction)
+		$anim.play("chomp")
+		$anim.speed_scale = 4
+		await get_tree().create_timer(0.3).timeout
+		$anim.speed_scale = 1
+		$anim.play("crawl")
 
 		
