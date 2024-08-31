@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5cn2asxb42hg"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_lo81v"]
+[ext_resource type="Texture2D" uid="uid://bytfcq0in0ak" path="res://assets/tela_inicial.png" id="2_mkl2p"]
+[ext_resource type="FontFile" uid="uid://2fwlxut8mu5t" path="res://fonts/BD_Cartoon_Shout.ttf" id="2_ugt3s"]
+
+[sub_resource type="Animation" id="Animation_eookf"]
+resource_name = "movimenta"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gc5vp"]
+_data = {
+"movimenta": SubResource("Animation_eookf")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 271.0
+offset_top = 153.0
+offset_right = 348.0
+offset_bottom = 245.0
+script = ExtResource("1_lo81v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gc5vp")
+}
+
+[node name="Label" type="Label" parent="AnimationPlayer"]
+offset_left = 67.0
+offset_top = 31.0
+offset_right = 564.0
+offset_bottom = 178.0
+theme_override_fonts/font = ExtResource("2_ugt3s")
+theme_override_font_sizes/font_size = 41
+text = "Raposinha Sapeca
+Adventures
+  "
+horizontal_alignment = 1
+
+[node name="TelaInicial" type="Sprite2D" parent="."]
+position = Vector2(38.5, 58)
+scale = Vector2(1.20508, 0.824219)
+texture = ExtResource("2_mkl2p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -204.0
+offset_top = 1.0
+offset_right = 216.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="B_comecar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Começar"
+
+[node name="B_sair" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sair"
+
+[connection signal="pressed" from="VBoxContainer/B_comecar" to="." method="_on_b_comecar_pressed"]
+[connection signal="pressed" from="VBoxContainer/B_sair" to="." method="_on_b_sair_pressed"]

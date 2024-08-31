@@ -1,0 +1,6 @@
+res://levels/world_01.tscn
+res://actors/player.tscn
+res://actors/GUI_player_itens.tscn
+res://actors/enemy.tscn
+res://levels/menu_principal.tscn
+res://scripts/menu.gd

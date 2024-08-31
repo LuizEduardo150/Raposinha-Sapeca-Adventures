@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgitc2y7be2k2"]
+
+[ext_resource type="Texture2D" uid="uid://ccf2nh58fnas5" path="res://assets/itensGUI.png" id="1_agahw"]
+[ext_resource type="Texture2D" uid="uid://nuvjirrfdhrs" path="res://assets/life_icon.png" id="2_86r71"]
+
+[node name="GUI_itens" type="CanvasLayer"]
+
+[node name="life" type="CanvasLayer" parent="."]
+
+[node name="life_bar" type="Sprite2D" parent="life"]
+position = Vector2(112.75, 8.375)
+scale = Vector2(0.53169, 0.376263)
+texture = ExtResource("1_agahw")
+region_enabled = true
+region_rect = Rect2(66.487, 0, 426.769, 99.8204)
+
+[node name="LifeIcon" type="Sprite2D" parent="life"]
+position = Vector2(18, 12)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("2_86r71")
+
+[node name="ProgressBar_life" type="ProgressBar" parent="life"]
+modulate = Color(0.658824, 0.0156863, 0.0980392, 1)
+self_modulate = Color(0, 0, 0, 1)
+offset_left = 31.0
+offset_top = 6.0
+offset_right = 211.0
+offset_bottom = 18.0
+value = 100.0
+rounded = true
+show_percentage = false

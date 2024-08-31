@@ -1,0 +1,14 @@
+Button
+AnimationPlayer
+AnimatableBody2D
+Label
+VBoxContainer
+Control
+CollisionShape2D
+Area2D
+CanvasLayer
+ProgressBar
+ParallaxBackground
+Sprite2D
+AnimatedSprite2D
+Node

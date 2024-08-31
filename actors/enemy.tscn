@@ -1,0 +1,226 @@
+[gd_scene load_steps=13 format=3 uid="uid://cyrxisgo3g5q4"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_3bmxr"]
+[ext_resource type="Texture2D" uid="uid://b8olfog4kg0ec" path="res://assets/Sprite Pack 5/6 - Mr. Chomps/Crawling_(32 x 32).png" id="1_4odyo"]
+[ext_resource type="Texture2D" uid="uid://vgcoiaggpo35" path="res://assets/Sprite Pack 5/6 - Mr. Chomps/Hurt_(32 x 32).png" id="2_a4utc"]
+[ext_resource type="Texture2D" uid="uid://dmghfrh7icjxs" path="res://assets/Sprite Pack 5/6 - Mr. Chomps/Crawl_&_Chomp_(32 x 32).png" id="3_hiddh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gddlj"]
+size = Vector2(3.5, 1.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x0tc"]
+size = Vector2(29, 9)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gwk8k"]
+radius = 6.0
+height = 24.0
+
+[sub_resource type="Animation" id="Animation_stlvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_4odyo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_f6844"]
+resource_name = "chomp"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_hiddh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_g3k3k"]
+resource_name = "crawl"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_4odyo")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_a1vc0"]
+resource_name = "hurt"
+length = 0.1
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_a4utc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpvej"]
+_data = {
+"RESET": SubResource("Animation_stlvn"),
+"chomp": SubResource("Animation_f6844"),
+"crawl": SubResource("Animation_g3k3k"),
+"hurt": SubResource("Animation_a1vc0")
+}
+
+[node name="enemy" type="CharacterBody2D"]
+position = Vector2(-1, -16)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_3bmxr")
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_4odyo")
+hframes = 6
+
+[node name="ponto_fraco" type="Area2D" parent="."]
+
+[node name="cabeca_inimigo" type="CollisionShape2D" parent="ponto_fraco"]
+position = Vector2(-2, 2)
+shape = SubResource("RectangleShape2D_gddlj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="hit_area" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 11.5)
+shape = SubResource("RectangleShape2D_7x0tc")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gwk8k")
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vpvej")
+}
+autoplay = "crawl"
+
+[node name="wall_detector" type="RayCast2D" parent="."]
+position = Vector2(0, 8)
+target_position = Vector2(-16, 0)
+collision_mask = 6
+
+[connection signal="body_entered" from="ponto_fraco" to="." method="_on_ponto_fraco_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
