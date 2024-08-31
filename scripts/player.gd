@@ -13,7 +13,7 @@ var life = 100
 # interfasse gráfica
 var life_bar_value : ProgressBar
 var dano_sofrido = false
-
+var direcao_dano : int = 0
 
 func _ready():
 	# pegando referência dos itens
@@ -23,10 +23,11 @@ func _ready():
 	$andando_4.play()
 	$parada_4.play()
 
-func sofreu_dano(dano:int):
+func sofreu_dano(dano:int, direction:int):
 	life -= dano
 	life_bar_value.value = life
 	dano_sofrido = true
+	direcao_dano = direction
 	if life == 0:
 		queue_free()
 		print("voce perdeu")
@@ -79,17 +80,29 @@ func _physics_process(delta):
 			set_raposinha_parada(direction)
 	
 	elif dano_sofrido:
-		if direcao_atual == 'l':
-			velocity.x = 5 * SPEED
-		else:
-			velocity.x = -5 * SPEED
+		if $parada_4.visible == true: # raposinha parada
+			if direcao_atual == 'r' and direcao_dano > 0:
+				velocity.x = 5 * SPEED
+			elif direcao_atual == 'r' and direcao_dano < 0:
+				velocity.x = -5 * SPEED
+			elif direcao_atual == 'l' and direcao_dano > 0:
+				velocity.x = 5 * SPEED
+			elif direcao_atual == 'l' and direcao_dano < 0:
+				velocity.x = -5 * SPEED
+		else: # andando
+			if direcao_atual == 'r' and direcao_dano > 0:
+				velocity.x = -5 * SPEED
+			elif direcao_atual == 'r' and direcao_dano < 0:
+				velocity.x = -5 * SPEED
+			elif direcao_atual == 'l' and direcao_dano > 0:
+				velocity.x = 5 * SPEED
+			elif direcao_atual == 'l' and direcao_dano < 0:
+				velocity.x = 5 * SPEED
 		
 		dano_sofrido = false
 	
 	'''else: # parece que está inutilizavel
 		# parada
 		velocity.x = move_toward(velocity.x, 0, SPEED)'''
-		
-		
 
 	move_and_slide()
